@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banking-monitor
+spec:
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: banking-monitor
+  template:
+    metadata:
+      labels:
+        app: banking-monitor
+    spec:
+      containers:
+      - name: banking-monitor
+        image: banking-monitor:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
